@@ -396,6 +396,13 @@ def experimenter_group():
 
 
 @pytest.fixture()
+def experimenter_group_with_experimenter(
+        experimenter_group, experimenter):
+    experimenter_group.linkExperimenter(experimenter)
+    return experimenter_group
+
+
+@pytest.fixture()
 def permissions():
     o = PermissionsI()
     return o
