@@ -28,6 +28,7 @@ from omero.model import \
     ExternalInfoI, \
     FileAnnotationI, \
     FormatI, \
+    GroupExperimenterMapI, \
     IlluminationI, \
     ImageI, \
     LabelI, \
@@ -398,7 +399,11 @@ def experimenter_group():
 @pytest.fixture()
 def experimenter_group_with_experimenter(
         experimenter_group, experimenter):
-    experimenter_group.linkExperimenter(experimenter)
+    _map = GroupExperimenterMapI()
+    _map.parent = experimenter_group
+    _map.child = experimenter
+    _map.owner = rbool(True)
+    experimenter_group.addGroupExperimenterMap(_map)
     return experimenter_group
 
 

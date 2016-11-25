@@ -31,10 +31,16 @@ class ExperimenterGroup201501Encoder(Encoder):
             experimenters = list()
             for group_experimenter_map in obj.copyGroupExperimenterMap():
                 experimenter = group_experimenter_map.child
-                experimenter_encoder = self.ctx.get_encoder(experimenter.__class__)
-                experimenters.append(
-                    experimenter_encoder.encode(experimenter)
+                experimenter_encoder = self.ctx.get_encoder(
+                    experimenter.__class__
                 )
+                experimenter_data = experimenter_encoder.encode(experimenter)
+                self.set_if_not_none(
+                    experimenter_data,
+                    'omero:owner',
+                    group_experimenter_map.owner
+                )
+                experimenters.append(experimenter_data)
             v['Experimenters'] = experimenters
         return v
 
