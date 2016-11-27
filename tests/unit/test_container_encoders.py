@@ -293,7 +293,7 @@ class TestScreenEncoder(object):
                     'Green': 0,
                     'Blue': 0,
                     'omero:status': 'the_status',
-                                        'WellSamples': [{
+                    'WellSamples': [{
                         '@id': 9L,
                         '@type': '%s#WellSample' % OME_SCHEMA_URL,
                         'PositionX': {
@@ -485,7 +485,7 @@ class TestScreenEncoder(object):
                     'Green': 0,
                     'Blue': 0,
                     'omero:status': 'the_status',
-                                        'WellSamples': [{
+                    'WellSamples': [{
                         '@id': 9L,
                         '@type': '%s#WellSample' % OME_SCHEMA_URL,
                         'PositionX': {
